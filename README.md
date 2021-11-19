@@ -1,5 +1,9 @@
 # Vega Editor [![Build Status](https://github.com/vega/editor/workflows/Test/badge.svg)](https://github.com/vega/editor/actions) [![Publish](https://github.com/vega/editor/actions/workflows/publish.yml/badge.svg?branch=publish)](https://github.com/vega/editor/actions/workflows/publish.yml)
 
+**Declan Naughton: This fork contains concept changes to be part of an integration with calculang, for hotreloading of model results (i.e. basically a json file for now)**
+
+**Concept changes start in app-shell.tsx, search hot**
+
 The **Vega editor** is a web application for authoring and testing [Vega](https://github.com/vega/vega) and [Vega-Lite](https://vega.github.io/vega-lite) visualizations. It includes a number of example specifications that showcase both the visual encodings and interaction techniques. It is deployed at https://vega.github.io/editor/.
 
 We integrated a back-end service at https://vega-editor-backend.vercel.app/ which lets a user log in through GitHub so that they can access his/her personal gists. The code for the backend is at https://github.com/vega/editor-backend.
