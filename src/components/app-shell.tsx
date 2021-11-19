@@ -30,10 +30,13 @@ export default class AppShell extends React.PureComponent {
   }
 }
 
+let hot = 0;
 if (module.hot) {
   module.hot.accept('./dn', () => {
+    hot++;
     console.log('HOT!' + require('./dn').default);
 
-    window.VEGA_DEBUG.view.insert('table', [{category: 'declan', amount: 100}]).run();
+    //window.VEGA_DEBUG.view.insert('table', [{category: 'declan', amount: 100, hot}]).run();
+    window.VEGA_DEBUG.view.insert('source_0', [{a: 'K', b: 100, hot}]).run();
   });
 }
