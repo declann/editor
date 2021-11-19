@@ -38,5 +38,7 @@ if (module.hot) {
 
     //window.VEGA_DEBUG.view.insert('table', [{category: 'declan', amount: 100, hot}]).run();
     window.VEGA_DEBUG.view.insert('source_0', [{a: 'K', b: 100, hot}]).run();
+
+    // should keep a memory and do -prevHot? so that hot-prevHot is simple, recs in vega-editor/app, etc.
   });
 }
