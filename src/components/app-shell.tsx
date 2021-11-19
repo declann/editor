@@ -4,8 +4,12 @@ import {Route, Switch} from 'react-router-dom';
 import App from './app';
 import Reset from './reset';
 
+import dn from './dn';
+
 export default class AppShell extends React.PureComponent {
   public render() {
+    console.log(dn);
+    console.log(window.VEGA_DEBUG);
     return (
       <div>
         <Switch>
@@ -24,4 +28,8 @@ export default class AppShell extends React.PureComponent {
       </div>
     );
   }
+}
+
+if (module.hot) {
+  module.hot.accept('./dn', () => console.log('HOT!' + require('./dn').default));
 }
