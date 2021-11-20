@@ -1,0 +1,19 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "EDIT DATA IN dn.tsx AND CHANGE HOT VERSION",
+  "data": { "values": [] },
+  "params": [
+    {
+      "name": "hot",
+      "value": 0,
+      "bind": { "input": "select", "options": [0, 1, 2, 3, 4, 5, 999] }
+    }
+  ],
+  "transform": [{ "filter": "datum.hot==hot" }],
+
+  "mark": "bar",
+  "encoding": {
+    "x": { "field": "function", "type": "nominal", "axis": { "labelAngle": 0 } },
+    "y": { "field": "value", "type": "quantitative" }
+  }
+}
