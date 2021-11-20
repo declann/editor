@@ -2,6 +2,12 @@
   "Single-View Plots": {
     "Bar Charts": [
       {
+        "name": "hot-bar-function-values",
+        "title": "Bar Chart with hot versioning, function-values",
+        "description": "A bar chart encodes quantitative values as the extent of rectangular bars.",
+        "style": "background-size: auto 105%; background-position: center center !important;"
+      },
+      {
         "name": "hot-bar",
         "title": "Bar Chart with hot versioning",
         "description": "A bar chart encodes quantitative values as the extent of rectangular bars.",

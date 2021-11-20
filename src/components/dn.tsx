@@ -1,13 +1,13 @@
 export default [
-  {a: 'A', b: 3},
-  {a: 'B', b: 10},
-  {a: 'C', b: 10},
-  {a: 'D', b: 10},
-  {a: 'E', b: 100},
-  {a: 'F', b: 50},
-  {a: 'G', b: 11}, // hello
-  {a: 'H', b: 10},
-  {a: 'I', b: 52},
+  {function: 'A', value: 3},
+  {function: 'B', value: 10},
+  {function: 'C', value: 10},
+  {function: 'D', value: 10},
+  {function: 'E', value: 100},
+  {function: 'F', value: 50},
+  {function: 'G', value: 11}, // hello
+  {function: 'H', value: 10},
+  {function: 'I', value: 52},
 ];
 
 // now this can be setup to import from a json file that calculang build&run process rights to, and done...
