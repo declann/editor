@@ -1,12 +1,12 @@
 export default [
   {function: 'A', value: 3},
-  {function: 'B', value: 10},
+  {function: 'B', value: 11},
   {function: 'C', value: 10},
   {function: 'D', value: 10},
   {function: 'E', value: 100},
-  {function: 'F', value: 50},
-  {function: 'G', value: 11}, // hello
-  {function: 'H', value: 10},
+  {function: 'F', value: 5},
+  {function: 'G', value: 12}, // hello
+  {function: 'H', value: 11},
   {function: 'I', value: 52},
 ];
 
