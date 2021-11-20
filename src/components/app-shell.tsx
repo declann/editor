@@ -30,6 +30,8 @@ export default class AppShell extends React.PureComponent {
   }
 }
 
+//window.VEGA_DEBUG.view.insert('source_0', require('./dn').default).run();
+
 let hot = 0;
 if (module.hot) {
   module.hot.accept('./dn', () => {
@@ -37,7 +39,12 @@ if (module.hot) {
     console.log('HOT!' + require('./dn').default);
 
     //window.VEGA_DEBUG.view.insert('table', [{category: 'declan', amount: 100, hot}]).run();
-    window.VEGA_DEBUG.view.insert('source_0', [{a: 'K', b: 100, hot}]).run();
+    window.VEGA_DEBUG.view
+      .insert(
+        'source_0',
+        require('./dn').default.map((d) => ({...d, hot}))
+      )
+      .run();
 
     // should keep a memory and do -prevHot? so that hot-prevHot is simple, recs in vega-editor/app, etc.
   });
