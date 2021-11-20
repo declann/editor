@@ -46,6 +46,23 @@ if (module.hot) {
       )
       .run();
 
+    // old code
+    window.VEGA_DEBUG.view
+      .change(
+        'source_0',
+        window.VEGA_DEBUG.view.changeset().remove(function (d) {
+          return d.hot == 999;
+        })
+      )
+      .run();
+
+    window.VEGA_DEBUG.view
+      .insert(
+        'source_0',
+        require('./dn').default.map((d) => ({...d, hot: 999 /* code for latest */}))
+      )
+      .run();
+
     // should keep a memory and do -prevHot? so that hot-prevHot is simple, recs in vega-editor/app, etc.
   });
 }
