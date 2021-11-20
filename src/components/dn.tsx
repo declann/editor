@@ -2,7 +2,7 @@ export default [
   {a: 'A', b: 3},
   {a: 'B', b: 55},
   {a: 'C', b: 1},
-  {a: 'D', b: 9},
+  {a: 'D', b: 10},
   {a: 'E', b: 81},
   {a: 'F', b: 53},
   {a: 'G', b: 0}, // hello

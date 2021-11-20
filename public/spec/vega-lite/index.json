@@ -3,7 +3,7 @@
     "Bar Charts": [
       {
         "name": "hot-bar",
-        "title": "Simple Bar Chart",
+        "title": "Bar Chart with hot versioning",
         "description": "A bar chart encodes quantitative values as the extent of rectangular bars.",
         "style": "background-size: auto 105%; background-position: center center !important;"
       },
