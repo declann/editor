@@ -1,5 +1,5 @@
 {
-  "name": "vega-editor",
+  "name": "vega-editor-hot-data-sandbox-test",
   "homepage": "http://vega.github.io/editor",
   "private": true,
   "license": "BSD-3-Clause",
@@ -100,5 +100,7 @@
     "deploy": "gh-pages -d dist",
     "analyze": "webpack --mode production --profile --json > stats.json && webpack-bundle-analyzer stats.json",
     "postinstall": "husky install && npx patch-package"
-  }
+  },
+  "keywords": [],
+  "description": "vega-editor works ✅\nHMR? ❌"
 }

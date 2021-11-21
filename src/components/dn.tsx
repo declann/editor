@@ -5,7 +5,7 @@ export default [
   { function: "D", value: 10 },
   { function: "E", value: 100 },
   { function: "F", value: 10 },
-  { function: "G", value: 13 }, // hello
+  { function: "G", value: 131 }, // hello
   { function: "H", value: 15 },
   { function: "I", value: 52 }
 ];
