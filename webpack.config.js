@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 
-let commitHash = require('child_process').execSync('git rev-parse --short HEAD').toString();
+let commitHash = 'hello';//require('child_process').execSync('git rev-parse --short HEAD').toString();
 
 module.exports = (env, argv) => {
   const config = {

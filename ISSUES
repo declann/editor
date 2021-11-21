@@ -1,0 +1,7 @@
+can't yarn build:only,
+
+1st error was about empty files config, so I made a change in ./node_modules/ts-loader/dist/config.js (tagged DN)
+
+new error is about JSX not being understood by babel (of course). Output of ts-loader includes jsx, how is this supposed to work?
+
+WAS NO TSCONFIG TAKEN DOWN FROM REPO?
