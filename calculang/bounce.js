@@ -5114,7 +5114,7 @@
               t_in,
             }) == 0
           )
-            return 60;
+            return 30;
           else if (
             y({
               dampener_in,

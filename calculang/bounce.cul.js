@@ -13,7 +13,7 @@ export const x = () => {
 };
 
 export const y_ = () => {
-  if (t() == 0) return 60;
+  if (t() == 0) return 30;
   else if (y({t_in: t() - 1}) + dy({t_in: t() - 1}) > 185) return 190;
   else return y({t_in: t() - 1}) + dy({t_in: t() - 1});
 };
