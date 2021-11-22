@@ -32,8 +32,75 @@ export default class AppShell extends React.PureComponent {
 
 //window.VEGA_DEBUG.view.insert('source_0', require('./dn').default).run();
 
+import('./dn2').then((dn2) => {
+  console.log(dn2);
+});
+
+/////// calculang stuff //////
+
+import('../../calculang/run-bounce.json' /* hardcode, replace by some config lookup */).then((data) => {
+  console.log(data);
+  window.VEGA_DEBUG.view
+    .insert(
+      'source_0',
+      data.map((d) => ({...d, hot}))
+    )
+    .run();
+
+  window.VEGA_DEBUG.view
+    .insert(
+      'source_0',
+      data.map((d) => ({...d, hot: 999 /* code for latest */}))
+    )
+    .run();
+});
+
+if (module.hot) {
+  module.hot.accept('../../calculang/run-bounce.json', () => {
+    console.log('hot dn2!!!');
+    console.log(require('../../calculang/run-bounce.json'));
+
+    const updated = require('../../calculang/run-bounce.json'); // already parsed
+
+    hot++;
+    console.log('HOT!' + require('./dn').default);
+
+    //window.VEGA_DEBUG.view.insert('table', [{category: 'declan', amount: 100, hot}]).run();
+    window.VEGA_DEBUG.view
+      .insert(
+        'source_0',
+        require('./dn').default.map((d) => ({...d, hot}))
+      )
+      .run();
+
+    // old code
+    window.VEGA_DEBUG.view
+      .change(
+        'source_0',
+        window.VEGA_DEBUG.view.changeset().remove(function (d) {
+          return d.hot == 999;
+        })
+      )
+      .run();
+
+    window.VEGA_DEBUG.view
+      .insert(
+        'source_0',
+        require('./dn').default.map((d) => ({...d, hot: 999 /* code for latest */}))
+      )
+      .run();
+
+    // should keep a memory and do -prevHot? so that hot-prevHot is simple, recs in vega-editor/app, etc.
+  });
+}
+
+//import('./dn').then(() => {
 let hot = 0;
 if (module.hot) {
+  module.hot.accept('./dn2', () => {
+    console.log('hot dn2!!!');
+  });
+
   module.hot.accept('./dn', () => {
     hot++;
     console.log('HOT!' + require('./dn').default);
@@ -66,3 +133,4 @@ if (module.hot) {
     // should keep a memory and do -prevHot? so that hot-prevHot is simple, recs in vega-editor/app, etc.
   });
 }
+//});
