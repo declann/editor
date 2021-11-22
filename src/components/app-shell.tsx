@@ -38,19 +38,22 @@ import('./dn2').then((dn2) => {
 
 /////// calculang stuff //////
 
+let hot = 0;
 import('../../calculang/run-bounce.json' /* hardcode, replace by some config lookup */).then((data) => {
   console.log(data);
+
+  // this doesn't seem to work, timing?
   window.VEGA_DEBUG.view
     .insert(
       'source_0',
-      data.map((d) => ({...d, hot}))
+      data.default.map((d) => ({...d, hot}))
     )
     .run();
 
   window.VEGA_DEBUG.view
     .insert(
       'source_0',
-      data.map((d) => ({...d, hot: 999 /* code for latest */}))
+      data.default.map((d) => ({...d, hot: 999 /* code for latest */}))
     )
     .run();
 });
@@ -69,7 +72,7 @@ if (module.hot) {
     window.VEGA_DEBUG.view
       .insert(
         'source_0',
-        require('./dn').default.map((d) => ({...d, hot}))
+        updated.map((d) => ({...d, hot}))
       )
       .run();
 
@@ -86,7 +89,7 @@ if (module.hot) {
     window.VEGA_DEBUG.view
       .insert(
         'source_0',
-        require('./dn').default.map((d) => ({...d, hot: 999 /* code for latest */}))
+        updated.map((d) => ({...d, hot: 999 /* code for latest */}))
       )
       .run();
 
@@ -94,8 +97,9 @@ if (module.hot) {
   });
 }
 
+/////// calculang stuff over //////
+
 //import('./dn').then(() => {
-let hot = 0;
 if (module.hot) {
   module.hot.accept('./dn2', () => {
     console.log('hot dn2!!!');

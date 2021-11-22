@@ -5170,7 +5170,7 @@
                 dampener({
                   dampener_in,
                 }) +
-              3
+              2
             );
           else if (
             y({
@@ -5199,8 +5199,8 @@
                 dampener({
                   dampener_in,
                 }) +
-              3
-            );
+              2
+            ); // messing with hot
         }; // if expressions vs statements would really help make this more concise
         // explicit inputs (core model):
 

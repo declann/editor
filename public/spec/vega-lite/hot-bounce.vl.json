@@ -2,6 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "EDIT DATA IN dn.tsx AND CHANGE HOT VERSION",
   "data": { "values": [] },
+  "width": 700,
   "params": [
     {
       "name": "hot",
