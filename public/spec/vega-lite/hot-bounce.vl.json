@@ -2,6 +2,10 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "EDIT bounce.cul.js and run yarn calculang:build-run for updates to be reflected in a new hot version number",
   "data": { "values": [] },
+  "config": {
+    "background": "#eee",
+    "hot-data-todo": "put ref to run-bounce.json"
+  },
   "width": 700,
   "params": [
     {
