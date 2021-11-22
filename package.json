@@ -26,6 +26,7 @@
     "webpack-dev-server": "^4.4.0"
   },
   "dependencies": {
+    "@calculang/calculang-js": "^0.1.0-alpha.4",
     "@reduxjs/toolkit": "^1.6.2",
     "@tippyjs/react": "^4.2.6",
     "@types/cytoscape": "^3.19.0",
@@ -71,7 +72,9 @@
     "vega-schema-url-parser": "^2.2.0",
     "vega-themes": "^2.10.0",
     "vega-tooltip": "^0.27.0",
-    "vega-typings": "^0.22.1"
+    "vega-typings": "^0.22.1",
+    "lru-memoize": "^1.1.0",
+    "underscore": "^1.13.1"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
@@ -87,6 +90,7 @@
     "start": "webpack serve --mode development",
     "build": "yarn clean && yarn vendor && yarn build:only",
     "build:only": "webpack --mode production",
+    "calculang:build-run": "cul-js compile ./calculang/bounce.cul.js && node ./calculang/run-bounce.js > ./calculang/run-bounce.json",
     "clean": "rimraf dist public/spec public/data",
     "postbuild": "rsync --ignore-existing -r public/* dist",
     "generate-example-images": "scripts/generate-example-images.sh",
