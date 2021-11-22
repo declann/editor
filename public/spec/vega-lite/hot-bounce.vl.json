@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "EDIT DATA IN dn.tsx AND CHANGE HOT VERSION",
+  "description": "EDIT bounce.cul.js and run yarn calculang:build-run for updates to be reflected in a new hot version number",
   "data": { "values": [] },
   "width": 700,
   "params": [
