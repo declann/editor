@@ -6,6 +6,8 @@
 
 **context = https://github.com/calculang/calculang/issues/37**
 
+**working working as described in https://github.com/declann/editor/commit/887ed98ac91acfccec5a3b970f853afbe917c33f#commitcomment-60696838**
+
 The **Vega editor** is a web application for authoring and testing [Vega](https://github.com/vega/vega) and [Vega-Lite](https://vega.github.io/vega-lite) visualizations. It includes a number of example specifications that showcase both the visual encodings and interaction techniques. It is deployed at https://vega.github.io/editor/.
 
 We integrated a back-end service at https://vega-editor-backend.vercel.app/ which lets a user log in through GitHub so that they can access his/her personal gists. The code for the backend is at https://github.com/vega/editor-backend.
