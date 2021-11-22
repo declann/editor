@@ -1,6 +1,6 @@
 # Vega Editor [![Build Status](https://github.com/vega/editor/workflows/Test/badge.svg)](https://github.com/vega/editor/actions) [![Publish](https://github.com/vega/editor/actions/workflows/publish.yml/badge.svg?branch=publish)](https://github.com/vega/editor/actions/workflows/publish.yml)
 
-**Declan Naughton: This fork contains concept changes to be part of an integration with calculang, for hotreloading of model results (i.e. basically a json file for now)**
+**Declan Naughton: This fork contains concept changes to be part of an integration with calculang, for hotreloading of model/results (results=a json file for now)**
 
 **Concept changes start in app-shell.tsx, search hot**
 
