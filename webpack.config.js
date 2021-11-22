@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 
-let commitHash = 'hello';//require('child_process').execSync('git rev-parse --short HEAD').toString();
+let commitHash = 'hello'; //require('child_process').execSync('git rev-parse --short HEAD').toString();
 
 module.exports = (env, argv) => {
   const config = {
@@ -119,11 +119,21 @@ module.exports = (env, argv) => {
     devServer: {
       client: {
         overlay: true,
+        webSocketURL: {
+          hostname: '0.0.0.0',
+          pathname: '/ws',
+          password: 'dev-server',
+          port: 8081,
+          protocol: 'ws',
+          username: 'webpack',
+        },
       },
       hot: true,
       devMiddleware: {
         stats: 'errors-only',
       },
+      allowedHosts: ['.github.io', '.ws-eu17.gitpod.io'],
+      //disableHostCheck: true, // insecure
       open: false,
       static: {
         directory: path.resolve(__dirname, 'public'),
