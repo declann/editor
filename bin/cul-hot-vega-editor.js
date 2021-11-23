@@ -15,6 +15,7 @@ program
     console.log(hotdata);
 
     // TODO now to launch vega-editor
+    // API vs. command, API makes sense RE passing in config
 
     // TODO log the contents, define the config, see about running vega-editor, feed in the config
     /*
