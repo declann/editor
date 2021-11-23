@@ -1,8 +1,12 @@
 {
-  "name": "vega-editor-hot-data-sandbox-test",
+  "name": "cul-hot-vega-editor",
+  "version": "0.1.0-alpha.1",
   "homepage": "http://vega.github.io/editor",
   "private": true,
-  "license": "BSD-3-Clause",
+  "license": "BSD-3-Clause and ask Declan Naughton",
+  "bin": {
+    "cul-hot-vega-editor": "./bin/cul-hot-vega-editor.js"
+  },
   "devDependencies": {
     "autoprefixer": "^10.4.0",
     "copy-webpack-plugin": "^9.0.1",
@@ -26,6 +30,7 @@
     "webpack-dev-server": "^4.4.0"
   },
   "dependencies": {
+    "commander": "^8.2.0",
     "@calculang/calculang-js": "^0.1.0-alpha.4",
     "@reduxjs/toolkit": "^1.6.2",
     "@tippyjs/react": "^4.2.6",
