@@ -30,10 +30,10 @@ program
 
     //runServer();
     server.startCallback(() => {
-      console.log('DN Successfully started server on http://localhost:8080'); // HMR not working because of websocket issues, why?
+      console.log('DN Successfully started server on http://localhost:8080');
     });
 
-    // TODO feed in the config, then back to thinking about models perspective vs data
+    // TODO feed in the calcuconfig, then back to thinking about models perspective vs data
     // TODO check running in a separate repo
     /*
     compiler(entrypoint, options)
