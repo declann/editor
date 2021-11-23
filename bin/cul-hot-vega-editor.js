@@ -33,10 +33,7 @@ program
       console.log('DN Successfully started server on http://localhost:8080'); // HMR not working because of websocket issues, why?
     });
 
-    // TODO now to launch vega-editor
-    // API vs. command, API makes sense RE passing in config
-
-    // TODO log the contents, define the config, see about running vega-editor, feed in the config
+    // TODO feed in the config, then back to thinking about models perspective vs data
     /*
     compiler(entrypoint, options)
       .then((d) => {
