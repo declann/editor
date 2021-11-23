@@ -34,6 +34,7 @@ program
     });
 
     // TODO feed in the config, then back to thinking about models perspective vs data
+    // TODO check running in a separate repo
     /*
     compiler(entrypoint, options)
       .then((d) => {
