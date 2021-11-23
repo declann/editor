@@ -30,7 +30,7 @@ program
 
     //runServer();
     server.startCallback(() => {
-      console.log('DN Successfully started server on http://localhost:8080');
+      console.log('DN Successfully started server on http://localhost:8080'); // HMR not working because of websocket issues, why?
     });
 
     // TODO now to launch vega-editor

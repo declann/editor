@@ -11,6 +11,7 @@ module.exports = (env, argv) => {
     entry: {
       main: './src/index.tsx',
     },
+    mode: 'development',
 
     output: {
       filename: '[name].js',
@@ -122,15 +123,15 @@ module.exports = (env, argv) => {
         webSocketURL: {
           hostname: '0.0.0.0',
           pathname: '/ws',
-          password: 'dev-server',
-          port: 8081,
+          password: 'dev-server', // is this bad?
+          //port: 8081,
           protocol: 'ws',
           username: 'webpack',
         },
       },
       hot: true,
       devMiddleware: {
-        stats: 'errors-only',
+        //stats: 'errors-only',
       },
       allowedHosts: ['.github.io', '.ws-eu17.gitpod.io'],
       //disableHostCheck: true, // insecure
