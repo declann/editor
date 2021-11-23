@@ -5,6 +5,20 @@ const fs = require('fs');
 
 const {program} = require('commander');
 
+const Webpack = require('webpack');
+const WebpackDevServer = require('webpack-dev-server');
+const webpackConfig = require('../webpack.config.js')(undefined, {mode: 'development'}); // needs to be hardcoded
+
+// https://webpack.js.org/api/webpack-dev-server/
+const compiler = Webpack(webpackConfig);
+const devServerOptions = {...webpackConfig.devServer, open: true};
+const server = new WebpackDevServer(devServerOptions, compiler);
+
+/*const runServer = async () => {
+  console.log('Starting server...');
+  await server.start();
+};*/
+
 program
   .version(require('../package.json').version)
   .command('launch <calcuconfig.json>')
@@ -13,6 +27,11 @@ program
     const hotdata = JSON.parse(fs.readFileSync(calcuconfig).toString()).hotdata; // todo model
     //console.log(calcuconfig);
     console.log(hotdata);
+
+    //runServer();
+    server.startCallback(() => {
+      console.log('DN Successfully started server on http://localhost:8080');
+    });
 
     // TODO now to launch vega-editor
     // API vs. command, API makes sense RE passing in config
