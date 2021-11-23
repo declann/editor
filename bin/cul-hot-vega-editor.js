@@ -10,7 +10,12 @@ program
   .command('launch <calcuconfig.json>')
   .description('launch models based on calcuconfig.json')
   .action((calcuconfig, options) => {
-    console.log(calcuconfig);
+    const hotdata = JSON.parse(fs.readFileSync(calcuconfig).toString()).hotdata; // todo model
+    //console.log(calcuconfig);
+    console.log(hotdata);
+
+    // TODO now to launch vega-editor
+
     // TODO log the contents, define the config, see about running vega-editor, feed in the config
     /*
     compiler(entrypoint, options)
@@ -25,3 +30,7 @@ program
         console.log(err);
       });*/
   });
+
+program.parse(process.argv);
+
+// move to async? https://github.com/tj/commander.js/#action-handler

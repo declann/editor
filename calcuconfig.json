@@ -1,0 +1,4 @@
+{
+  "hotdata": "./calculang/run-bounce.json",
+  "model": "./calculang/bounce.cul.js"
+}
