@@ -118,16 +118,21 @@ module.exports = (env, argv) => {
     ],
 
     devServer: {
+      allowedHosts: ['.sse.codesandbox.io', 'codesandbox.io'],
+
       client: {
         overlay: true,
-        webSocketURL: {
+        webSocketURL: 'auto://0.0.0.0:0/ws',
+        //logging: "verbose",
+
+        /* webSocketURL: {
           hostname: '0.0.0.0',
           pathname: '/ws',
           password: 'dev-server', // is this bad?
           //port: 8081,
           protocol: 'ws',
           username: 'webpack',
-        },
+        },*/
       },
       hot: true,
       devMiddleware: {

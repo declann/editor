@@ -30,7 +30,6 @@
     "webpack-dev-server": "^4.4.0"
   },
   "dependencies": {
-    "commander": "^8.2.0",
     "@calculang/calculang-js": "^0.1.0-alpha.4",
     "@reduxjs/toolkit": "^1.6.2",
     "@tippyjs/react": "^4.2.6",
@@ -41,14 +40,17 @@
     "@types/semver": "^7.3.9",
     "ajv": "^8.6.3",
     "ajv-formats": "^2.1.1",
+    "commander": "^8.2.0",
     "cytoscape": "^3.20.0",
     "cytoscape-popper": "^2.0.0",
     "d3-array": "^3.1.1",
     "d3-geo-projection": "^4.0.0",
     "d3-scale": "^4.0.2",
+    "dos2unix-cli": "^1.0.1",
     "elkjs": "^0.7.1",
     "history": "^5.1.0",
     "json-stringify-pretty-compact": "^3.0.0",
+    "lru-memoize": "^1.1.0",
     "lz-string": "^1.4.4",
     "monaco-editor": "^0.29.1",
     "prettier": "^2.4.x",
@@ -70,6 +72,7 @@
     "redux-thunk": "^2.4.0",
     "tippy.js": "^6.3.3",
     "tslib": "^2.3.1",
+    "underscore": "^1.13.1",
     "vega-cli": "5.21.0",
     "vega-datasets": "^2.2.0",
     "vega-embed": "^6.20.0",
@@ -77,9 +80,7 @@
     "vega-schema-url-parser": "^2.2.0",
     "vega-themes": "^2.10.0",
     "vega-tooltip": "^0.27.0",
-    "vega-typings": "^0.22.1",
-    "lru-memoize": "^1.1.0",
-    "underscore": "^1.13.1"
+    "vega-typings": "^0.22.1"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
@@ -95,6 +96,7 @@
     "start": "webpack serve --mode development",
     "build": "yarn clean && yarn vendor && yarn build:only",
     "build:only": "webpack --mode production",
+    "calculang:prepare": "dos2unix ./node_modules/.bin/cul-js # needed because we use yarn to install the command in editor integration, gets line ending error",
     "calculang:build-run": "cul-js compile ./calculang/bounce.cul.js && node ./calculang/run-bounce.js > ./calculang/run-bounce.json",
     "clean": "rimraf dist public/spec public/data",
     "postbuild": "rsync --ignore-existing -r public/* dist",
