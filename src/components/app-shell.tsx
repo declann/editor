@@ -38,8 +38,81 @@ import('./dn2').then((dn2) => {
 
 /////// calculang stuff //////
 
+var domains = {
+  //functions: ['x','dx','y','dy','compressed'], now determined from introspection_info
+  dx_in: [-3, 0, 3],
+  dampener_in: [0.9, 0.95, 1, 1.05],
+  t_in: [...Array(30).keys()],
+};
+
+import('../../calculang/bounce.js').then((bounce) => {
+  console.log('HELLO');
+  var introspection_info = require('../../calculang/bounce-introspection.json'); // todo fix
+
+  var functions = Object.values(introspection_info.cul_functions)
+    .filter((d) => d.cul_scope_id == 0 && d.reason != 'input definition' && d.name[d.name.length - 1] != '_')
+    .filter(
+      (e) =>
+        e.inputs.reduce((a, v) => {
+          return a + (domains[v] == undefined ? 1 : 0);
+        }, 0) == 0
+    ) // exclude where some input doesn't have a domain
+    .filter((d) => d.inputs[0] != d.name + '_in')
+    .map((d) => d.name);
+
+  var function_inputs = {};
+  functions.forEach((d) => {
+    function_inputs[d] = Object.values(introspection_info.cul_functions).filter((e) => e.name == d)[0].inputs;
+  });
+
+  var function_inputs_cp = {};
+  functions.forEach((d) => {
+    function_inputs_cp[d] = [];
+    function_inputs[d].forEach((e) => {
+      var o = {};
+      //if (domains[e] != undefined) o[e] = domains[e];
+      o[e] = domains[e];
+      function_inputs_cp[d].push(o);
+    });
+    function_inputs_cp[d].push({function$: [bounce[d]]});
+  });
+
+  console.log(functions);
+  console.log(function_inputs_cp);
+
+  //debugger;
+  var data = [].concat.apply(
+    [],
+    functions.map((fn) =>
+      cartesianProduct(function_inputs_cp[fn]).map(({function$, ...d}) => ({...d, function: fn, value: function$(d)}))
+    )
+  ); //.reduce([], (acc, val) => acc.concat(val))
+
+  console.log(data);
+
+  window.VEGA_DEBUG.view
+    .insert(
+      'source_0',
+      data.map((d) => ({...d, hot}))
+    )
+    .run();
+
+  window.VEGA_DEBUG.view
+    .insert(
+      'source_0',
+      data.map((d) => ({...d, hot: 999 /* code for latest */}))
+    )
+    .run();
+});
+
+//import('../../calculang/bounce-introspection.json').then((introspection_info) => {});
+
+// todo hot part from above changes
+
 let hot = 0;
 import('../../calculang/run-bounce.json' /* hardcode, replace by some config lookup */).then((data) => {
+  return;
+  //return;
   console.log(data);
 
   // this doesn't seem to work, timing?
@@ -138,3 +211,32 @@ if (module.hot) {
   });
 }
 //});
+
+// https://stackoverflow.com/questions/18957972/cartesian-product-of-objects-in-javascript
+function cartesianProduct(input, current) {
+  if (!input || !input.length) {
+    return [];
+  }
+
+  var head = input[0];
+  var tail = input.slice(1);
+  var output = [];
+
+  for (var key in head) {
+    for (var i = 0; i < head[key].length; i++) {
+      var newCurrent = copy(current);
+      newCurrent[key] = head[key][i];
+      if (tail.length) {
+        var productOfTail = cartesianProduct(tail, newCurrent);
+        output = output.concat(productOfTail);
+      } else output.push(newCurrent);
+    }
+  }
+  return output;
+}
+
+function copy(obj) {
+  var res = {};
+  for (var p in obj) res[p] = obj[p];
+  return res;
+}

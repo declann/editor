@@ -97,6 +97,7 @@
     "build": "yarn clean && yarn vendor && yarn build:only",
     "build:only": "webpack --mode production",
     "calculang:prepare": "dos2unix ./node_modules/.bin/cul-js # needed because we use yarn to install the command in editor integration, gets line ending error",
+    "calculang:build-introspect": "cul-js compile ./calculang/bounce.cul.js && cul-js introspect ./calculang/bounce.cul.js > ./calculang/bounce-introspection.json",
     "calculang:build-run": "cul-js compile ./calculang/bounce.cul.js && node ./calculang/run-bounce.js > ./calculang/run-bounce.json",
     "clean": "rimraf dist public/spec public/data",
     "postbuild": "rsync --ignore-existing -r public/* dist",
