@@ -8,6 +8,14 @@ function projection() {
   let projection_prime = [];
   [...Array(t_end).keys()].forEach((t_in) => {
     projection_prime.push({t_in, dx_in, dampener_in, function: 'x', value: Math.round(bounce.x({t_in, dx_in}))});
+
+    // I need to work off... introspection info, but how should I read it in?
+    // doing this first in Observable (model-explorer-wip)...
+    // done & republished
+
+    // this code isn't following model-explorer-wip... so TODO move it to do so
+    // but first introspection...
+
     projection_prime.push({
       t_in,
       dx_in /* keep? */,
