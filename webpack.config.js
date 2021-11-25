@@ -118,7 +118,8 @@ module.exports = (env, argv) => {
     ],
 
     devServer: {
-      allowedHosts: ['.sse.codesandbox.io', 'codesandbox.io'],
+      // code sandbox use eg https://xxxxx-8080.sse.codesandbox.io/#/
+      allowedHosts: ['.sse.codesandbox.io', 'codesandbox.io', '.github.io', '.ws-eu17.gitpod.io'],
 
       client: {
         overlay: true,
@@ -138,7 +139,6 @@ module.exports = (env, argv) => {
       devMiddleware: {
         //stats: 'errors-only',
       },
-      allowedHosts: ['.github.io', '.ws-eu17.gitpod.io'],
       //disableHostCheck: true, // insecure
       open: false,
       static: {
