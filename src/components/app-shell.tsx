@@ -121,7 +121,10 @@ function hotreload(bounce) {
   // "Note that for performance reasons Vega-Lite doesn’t re-calculate layouts on every view change by default. If your view is cut off after the view updates, you can either set resize to true or manually call view.resize() through the Vega view API."
 } //);
 
+var hotcache = [];
+
 import('../../calculang/bounce.js').then((bounce) => {
+  hotcache[hot] = bounce;
   hotreload(bounce);
 });
 
@@ -129,7 +132,13 @@ if (module.hot) {
   module.hot.accept('../../calculang/bounce.js', () => {
     const newbounce = require('../../calculang/bounce.js'); // can I keep my own cache of all versions? for interactions
     hot++;
+    hotcache[hot] = newbounce;
     hotreload(newbounce);
+    if (hot == 3) {
+      hotreload(hotcache[0]);
+      hotreload(hotcache[1]);
+      hotreload(hotcache[2]);
+    }
   });
 }
 
