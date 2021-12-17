@@ -2,6 +2,12 @@
   "Single-View Plots": {
     "Bar Charts": [
       {
+        "name": "hot-bounce-facet",
+        "title": "bounce view with hot versioning faceted",
+        "description": "A bounce view with hot versioning",
+        "style": "background-size: auto 105%; background-position: center center !important;"
+      },
+      {
         "name": "hot-bounce",
         "title": "bounce view with hot versioning",
         "description": "A bounce view with hot versioning",

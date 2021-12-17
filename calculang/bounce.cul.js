@@ -24,7 +24,7 @@ export const compressed = () => (y() == 190 ? true : false);
 export const dy_ = () => {
   if (t() == 0) return 0 * dampener() + 2;
   else if (y({t_in: t()}) > 185) return -dy({t_in: t() - 1});
-  else return dy({t_in: t() - 1}) * dampener() + 2; // messing with hot
+  else return dy({t_in: t() - 1}) * dampener() + 10; // messing with hot
 }; // if expressions vs statements would really help make this more concise
 
 // explicit inputs (core model):

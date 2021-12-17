@@ -4785,7 +4785,7 @@ const dy_ = ({
     }) - 1
   }) * dampener({
     dampener_in
-  }) + 2; // messing with hot
+  }) + 10; // messing with hot
 }; // if expressions vs statements would really help make this more concise
 // explicit inputs (core model):
 

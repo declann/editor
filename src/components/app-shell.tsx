@@ -40,13 +40,13 @@ import('./dn2').then((dn2) => {
 
 var domains = {
   //functions: ['x','dx','y','dy','compressed'], now determined from introspection_info
-  dx_in: [-3, 0, 3],
-  dampener_in: [0.9, 0.95, 1, 1.05],
+  dx_in: [/*-3, 0,*/ 3],
+  dampener_in: [/*0.9,*/ 0.95 /*, 1, 1.05*/],
   t_in: [...Array(30).keys()],
 };
 
-import('../../calculang/bounce.js').then((bounce) => {
-  console.log('HELLO');
+//import('../../calculang/bounce.js').then((bounce) => {
+function hotreload(bounce) {
   var introspection_info = require('../../calculang/bounce-introspection.json'); // todo fix
 
   var functions = Object.values(introspection_info.cul_functions)
@@ -84,7 +84,11 @@ import('../../calculang/bounce.js').then((bounce) => {
   var data = [].concat.apply(
     [],
     functions.map((fn) =>
-      cartesianProduct(function_inputs_cp[fn]).map(({function$, ...d}) => ({...d, function: fn, value: function$(d)}))
+      cartesianProduct(function_inputs_cp[fn]).map(({function$, ...d}) => ({
+        ...d,
+        function: fn,
+        value: Math.round(function$(d)),
+      }))
     )
   ); //.reduce([], (acc, val) => acc.concat(val))
 
@@ -98,119 +102,41 @@ import('../../calculang/bounce.js').then((bounce) => {
     .run();
 
   window.VEGA_DEBUG.view
+    .change(
+      'source_0',
+      window.VEGA_DEBUG.view.changeset().remove(function (d) {
+        return d.hot == 999;
+      })
+    )
+    .run();
+
+  window.VEGA_DEBUG.view
     .insert(
       'source_0',
       data.map((d) => ({...d, hot: 999 /* code for latest */}))
     )
     .run();
+
+  VEGA_DEBUG.view.resize().run();
+} //);
+
+import('../../calculang/bounce.js').then((bounce) => {
+  hotreload(bounce);
 });
+
+if (module.hot) {
+  module.hot.accept('../../calculang/bounce.js', () => {
+    const newbounce = require('../../calculang/bounce.js');
+    hot++;
+    hotreload(newbounce);
+  });
+}
 
 //import('../../calculang/bounce-introspection.json').then((introspection_info) => {});
 
 // todo hot part from above changes
 
 let hot = 0;
-import('../../calculang/run-bounce.json' /* hardcode, replace by some config lookup */).then((data) => {
-  return;
-  //return;
-  console.log(data);
-
-  // this doesn't seem to work, timing?
-  window.VEGA_DEBUG.view
-    .insert(
-      'source_0',
-      data.default.map((d) => ({...d, hot}))
-    )
-    .run();
-
-  window.VEGA_DEBUG.view
-    .insert(
-      'source_0',
-      data.default.map((d) => ({...d, hot: 999 /* code for latest */}))
-    )
-    .run();
-});
-
-if (module.hot) {
-  module.hot.accept('../../calculang/run-bounce.json', () => {
-    console.log('hot dn2!!!');
-    console.log(require('../../calculang/run-bounce.json'));
-
-    const updated = require('../../calculang/run-bounce.json'); // already parsed
-
-    hot++;
-    console.log('HOT!' + require('./dn').default);
-
-    //window.VEGA_DEBUG.view.insert('table', [{category: 'declan', amount: 100, hot}]).run();
-    window.VEGA_DEBUG.view
-      .insert(
-        'source_0',
-        updated.map((d) => ({...d, hot}))
-      )
-      .run();
-
-    // old code
-    window.VEGA_DEBUG.view
-      .change(
-        'source_0',
-        window.VEGA_DEBUG.view.changeset().remove(function (d) {
-          return d.hot == 999;
-        })
-      )
-      .run();
-
-    window.VEGA_DEBUG.view
-      .insert(
-        'source_0',
-        updated.map((d) => ({...d, hot: 999 /* code for latest */}))
-      )
-      .run();
-
-    // should keep a memory and do -prevHot? so that hot-prevHot is simple, recs in vega-editor/app, etc.
-  });
-}
-
-/////// calculang stuff over //////
-
-//import('./dn').then(() => {
-if (module.hot) {
-  module.hot.accept('./dn2', () => {
-    console.log('hot dn2!!!');
-  });
-
-  module.hot.accept('./dn', () => {
-    hot++;
-    console.log('HOT!' + require('./dn').default);
-
-    //window.VEGA_DEBUG.view.insert('table', [{category: 'declan', amount: 100, hot}]).run();
-    window.VEGA_DEBUG.view
-      .insert(
-        'source_0',
-        require('./dn').default.map((d) => ({...d, hot}))
-      )
-      .run();
-
-    // old code
-    window.VEGA_DEBUG.view
-      .change(
-        'source_0',
-        window.VEGA_DEBUG.view.changeset().remove(function (d) {
-          return d.hot == 999;
-        })
-      )
-      .run();
-
-    window.VEGA_DEBUG.view
-      .insert(
-        'source_0',
-        require('./dn').default.map((d) => ({...d, hot: 999 /* code for latest */}))
-      )
-      .run();
-
-    // should keep a memory and do -prevHot? so that hot-prevHot is simple, recs in vega-editor/app, etc.
-  });
-}
-//});
 
 // https://stackoverflow.com/questions/18957972/cartesian-product-of-objects-in-javascript
 function cartesianProduct(input, current) {
