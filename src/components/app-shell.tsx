@@ -130,7 +130,7 @@ import('../../calculang/bounce.js').then((bounce) => {
 
 if (module.hot) {
   module.hot.accept('../../calculang/bounce.js', () => {
-    const newbounce = require('../../calculang/bounce.js'); // can I keep my own cache of all versions? for interactions
+    const newbounce = require('../../calculang/bounce.js'); // can I keep my own cache of all versions? for interactions? yes
     hot++;
     hotcache[hot] = newbounce;
     hotreload(newbounce);
