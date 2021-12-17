@@ -166,3 +166,14 @@ function copy(obj) {
   for (var p in obj) res[p] = obj[p];
   return res;
 }
+
+// testing commands:
+
+// in my vega editor to capture data:
+// copy(JSON.stringify(VEGA_DEBUG.view.data('source_0')));
+
+// upload gist
+
+// in official vega editor set data to gist, or empty value (source -> source_0 maybe)
+
+// fetch('https://gist.githubusercontent.com/declann/b3136000e4458e7e8cc0241a218ab1b4/raw/cd6333148d9d67425cc7323b50b1b21c4a5c32bd/hot%2520data%2520from%2520bounce.cul.js%2520dev').then(d => d.json()).then(d => {VEGA_DEBUG.view.insert('source', d).run()})
