@@ -1,52 +1,19 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "EDIT bounce.cul.js and run yarn calculang:build-run for updates to be reflected in a new hot version number",
-  "data": {
-    "values": []
-  },
+  "data": { "values": [] },
   "config": {
     "background": "#eee",
     "hot-data-todo": "put ref to run-bounce.json"
   },
   "width": 700,
-  "params": [
-    {
-      "name": "hot",
-      "value": 999,
-      "bind": {
-        "input": "select",
-        "options": [
-          0,
-          1,
-          2,
-          3,
-          4,
-          5,
-          999
-        ]
-      }
-    }
-  ],
-  "transform": [
-    {
-      "filter": "datum.hot==hot"
-    }
-  ],
+
   "mark": "text",
   "encoding": {
-    "x": {
-      "field": "t_in",
-      "type": "quantitative"
-    },
-    "y": {
-      "field": "function"
-    },
-    "color": {
-      "field": "function"
-    },
-    "text": {
-      "field": "value",
-      "type": "quantitative"
-    }
+    "row": { "field": "hot" },
+    "x": { "field": "t_in", "type": "quantitative" },
+    "y": { "field": "function" },
+    "color": { "field": "function" },
+    "text": { "field": "value", "type": "quantitative" }
   }
 }
